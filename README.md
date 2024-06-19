@@ -112,6 +112,27 @@ Create a screen recording session to demonstrate how the app works. All implemen
 
 Explain in a Readme file how to run your code.
 
+Navigate to the Project Directory:
+Open your terminal and change the current directory to the mobile folder:
+
+```bash
+cd mobile
+```
+
+Install Dependencies:
+Use the following command to install all necessary dependencies:
+
+```bash
+npx expo install
+````
+
+Start the Development Server:
+Once the dependencies are installed, start the Expo development server:
+
+```bash
+npx expo start
+```
+
 ## Timeline
 
 The challenge should take around 4-5h, but you are welcome to spend more time on it if you want to perfect your solution. The challenge must be submitted within 24h after receiving it.

@@ -19,5 +19,8 @@
   "homepage": "https://github.com/NoPaperMenu/react-native-challenge#readme",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "react-native-svg-transformer": "^1.4.0"
   }
 }
