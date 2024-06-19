@@ -2,6 +2,9 @@
 
 Implement a React Native application for a cuisine navigation app.
 
+https://github.com/Jalson1982/react-native-challenge/assets/35011526/beb6cbde-b8e6-4687-8d04-01e30d773511
+
+
 ## Screens
 
 | Screen             | Description            |
