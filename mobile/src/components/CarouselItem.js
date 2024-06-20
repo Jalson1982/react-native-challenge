@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text, TouchableOpacity, Dimensions } from "react-native";
+import { Image, Text, TouchableOpacity } from "react-native";
 import { ITEM_WIDTH } from "../utils";
 
 export const CarouselItem = ({ name, imagePath, onPress }) => (
