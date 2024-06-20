@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategory } from "../store";
 import { fetchCuisines } from "../services/getCuisines";
@@ -11,9 +11,12 @@ const useCuisinesData = () => {
     dispatch(fetchCuisines());
   }, [dispatch]);
 
-  const selectCategoryHandler = (category) => {
-    dispatch(selectCategory({ category }));
-  };
+  const selectCategoryHandler = useCallback(
+    (category) => {
+      dispatch(selectCategory({ category }));
+    },
+    [dispatch]
+  );
 
   const { firstRowData, secondRowData } = useMemo(() => {
     const currentParentId = parentIds[parentIds.length - 1]?.id ?? null;
@@ -21,16 +24,19 @@ const useCuisinesData = () => {
       (item) => item.parentId === currentParentId
     );
 
-    if (filteredData.length === 0)
+    if (filteredData.length === 0) {
       return { firstRowData: [], secondRowData: [] };
-    if (filteredData.length <= 2)
-      return { firstRowData: filteredData, secondRowData: [] };
+    }
 
     const firstRowData = [];
     const secondRowData = [];
 
     filteredData.forEach((item, index) => {
-      (index % 2 === 0 ? firstRowData : secondRowData).push(item);
+      if (index % 2 === 0) {
+        firstRowData.push(item);
+      } else {
+        secondRowData.push(item);
+      }
     });
 
     return { firstRowData, secondRowData };
