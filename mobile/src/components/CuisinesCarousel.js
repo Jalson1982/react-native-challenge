@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { View, FlatList } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { CarouselItem } from "./CarouselItem";
@@ -9,6 +9,18 @@ const GRADIENT_COLORS = ["#FFFFFF", "#FFFFFFE6", "#FFFFFF00"];
 export const CuisinesCarousel = () => {
   const { firstRowData, secondRowData, selectCategoryHandler } =
     useCuisinesData();
+
+  const renderItem = useCallback(
+    ({ item }) => (
+      <CarouselItem
+        imagePath={item.imagePath}
+        name={item.name}
+        onPress={() => selectCategoryHandler(item)}
+      />
+    ),
+    [selectCategoryHandler]
+  );
+
   return (
     <View>
       <LinearGradient
@@ -25,13 +37,7 @@ export const CuisinesCarousel = () => {
         showsHorizontalScrollIndicator={false}
         data={firstRowData}
         horizontal
-        renderItem={({ item }) => (
-          <CarouselItem
-            imagePath={item.imagePath}
-            name={item.name}
-            onPress={() => selectCategoryHandler(item)}
-          />
-        )}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
       {secondRowData.length > 0 && (
@@ -40,13 +46,7 @@ export const CuisinesCarousel = () => {
           showsHorizontalScrollIndicator={false}
           data={secondRowData}
           horizontal
-          renderItem={({ item }) => (
-            <CarouselItem
-              imagePath={item.imagePath}
-              name={item.name}
-              onPress={() => selectCategoryHandler(item)}
-            />
-          )}
+          renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
       )}
