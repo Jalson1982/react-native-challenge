@@ -123,7 +123,7 @@ Install Dependencies:
 Use the following command to install all necessary dependencies:
 
 ```bash
-npx expo install
+npm install
 ````
 
 Start the Development Server:
