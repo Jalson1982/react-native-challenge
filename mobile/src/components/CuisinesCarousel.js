@@ -4,17 +4,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import { CarouselItem } from "./CarouselItem";
 import useCuisinesData from "../hooks/useCuisinData";
 
+const GRADIENT_COLORS = ["#FFFFFF", "#FFFFFFE6", "#FFFFFF00"];
+
 export const CuisinesCarousel = () => {
   const { firstRowData, secondRowData, selectCategoryHandler } =
     useCuisinesData();
   return (
     <View>
       <LinearGradient
-        colors={[
-          "rgba(255, 255, 255, 1)",
-          "rgba(255, 255, 255, 0.9)",
-          "rgba(255, 255, 255, 0)",
-        ]}
+        colors={GRADIENT_COLORS}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 0 }}
         style={styles.gradient}
